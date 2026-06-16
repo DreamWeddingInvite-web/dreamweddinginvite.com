@@ -1,0 +1,265 @@
+/* Royal Gold / Classic Luxury Theme Tokens */
+:root {
+    --theme-burgundy-dark: #2A050A;
+    --theme-burgundy-light: #4A0E17;
+    --theme-gold-accent: #D4AF37;
+    --theme-gold-light: #FFE082;
+    --theme-gold-dark: #AA7C11;
+    --theme-glass-dark: rgba(26, 4, 8, 0.82);
+    --theme-text-gold: #F5D76E;
+    --theme-text-light: #FDFBF7;
+    --theme-text-muted: #D1C5B4;
+    --theme-font-heading: 'Playfair Display', serif;
+    --theme-font-cursive: 'Great Vibes', cursive;
+}
+
+/* Specific theme styles mapping */
+.app-container {
+    background-color: var(--theme-burgundy-dark);
+    background-image: radial-gradient(circle at center, var(--theme-burgundy-light) 0%, var(--theme-burgundy-dark) 100%);
+    color: var(--theme-text-light);
+}
+
+.video-overlay {
+    background: linear-gradient(to bottom, rgba(42, 5, 10, 0.35) 0%, rgba(26, 4, 8, 0.85) 100%);
+}
+
+.invite-sub {
+    color: var(--theme-text-gold);
+    font-family: var(--theme-font-body);
+}
+
+.couple-names {
+    font-family: var(--theme-font-heading);
+    color: #fff;
+    text-shadow: 0 3px 15px rgba(212, 175, 55, 0.4);
+}
+
+.invite-action {
+    color: var(--theme-text-muted);
+}
+
+.date-badge-container span {
+    font-family: var(--theme-font-heading);
+    color: #fff;
+}
+
+.date-badge-container .badge-day {
+    color: var(--theme-gold-accent);
+}
+
+.wedding-time {
+    color: var(--theme-text-gold);
+}
+
+.divider-line {
+    background: var(--theme-gold-accent);
+}
+
+.invite-quote {
+    font-family: var(--theme-font-heading);
+    color: var(--theme-text-gold);
+}
+
+/* Monogram */
+.monogram-wreath {
+    border: 2px double var(--theme-gold-accent);
+    background: rgba(212, 175, 55, 0.12);
+}
+
+.monogram-wreath::before {
+    color: var(--theme-gold-accent);
+}
+
+.monogram-text {
+    font-family: var(--theme-font-heading);
+    color: var(--theme-text-gold);
+}
+
+/* Nav bar */
+.bottom-nav {
+    background: rgba(26, 4, 8, 0.94);
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.nav-item {
+    color: var(--theme-text-muted);
+}
+
+.nav-item.active {
+    color: var(--theme-gold-accent);
+}
+
+.nav-item.active::after {
+    background-color: var(--theme-gold-accent);
+}
+
+/* Audio Player */
+.music-controller {
+    background: rgba(26, 4, 8, 0.85);
+    border-color: rgba(212, 175, 55, 0.25);
+}
+
+.music-controller:hover {
+    border-color: var(--theme-gold-accent);
+}
+
+/* Buttons */
+.nav-trigger-btn, .rsvp-submit-btn {
+    background: linear-gradient(135deg, var(--theme-gold-dark) 0%, var(--theme-gold-accent) 50%, var(--theme-gold-dark) 100%);
+    color: #1A0306;
+}
+
+.nav-trigger-btn:hover, .rsvp-submit-btn:hover {
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.55);
+}
+
+/* Countdown */
+.header-subtitle {
+    font-family: var(--theme-font-cursive);
+    color: var(--theme-gold-accent);
+}
+
+.header-title {
+    font-family: var(--theme-font-heading);
+    color: #fff;
+    text-shadow: 0 2px 10px rgba(212, 175, 55, 0.15);
+}
+
+.count-card {
+    background: var(--theme-glass-dark);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+.count-num {
+    color: var(--theme-text-gold);
+}
+
+.count-lbl {
+    color: var(--theme-text-muted);
+}
+
+.circle-frame {
+    border: 5px solid rgba(26, 4, 8, 0.95);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(212, 175, 55, 0.45);
+}
+
+.circle-frame::after {
+    border: 2px solid var(--theme-gold-accent);
+}
+
+.countdown-quote p {
+    font-family: var(--theme-font-heading);
+    color: var(--theme-text-muted);
+}
+
+/* Timeline */
+.timeline-line {
+    background: linear-gradient(to bottom, var(--theme-gold-accent) 0%, var(--theme-gold-light) 50%, var(--theme-gold-accent) 100%);
+}
+
+.timeline-time {
+    color: var(--theme-text-gold);
+}
+
+.timeline-icon-wrap {
+    background: var(--theme-burgundy-dark);
+    border: 2px solid var(--theme-gold-accent);
+}
+
+.timeline-details {
+    background: var(--theme-glass-dark);
+    border: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+.timeline-details h4 {
+    font-family: var(--theme-font-heading);
+    color: var(--theme-text-gold);
+}
+
+.timeline-details p {
+    color: var(--theme-text-muted);
+}
+
+.location-btn {
+    background: var(--theme-glass-dark);
+    border: 1px solid var(--theme-gold-accent);
+    color: var(--theme-text-gold);
+}
+
+.location-btn:hover {
+    background: var(--theme-gold-accent);
+    color: #1A0306;
+}
+
+/* RSVP card */
+.rsvp-card-wrap {
+    background: var(--theme-glass-dark);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.form-group label {
+    color: var(--theme-text-gold);
+}
+
+.form-group input[type="text"] {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    color: var(--theme-text-light);
+}
+
+.form-group input[type="text"]:focus {
+    border-color: var(--theme-gold-accent);
+    box-shadow: 0 0 6px rgba(212, 175, 55, 0.3);
+}
+
+.toggle-btn-custom {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    color: var(--theme-text-muted);
+}
+
+.attendance-toggle-option input:checked + .accept-btn {
+    background: linear-gradient(135deg, var(--theme-gold-dark) 0%, var(--theme-gold-accent) 50%, var(--theme-gold-dark) 100%);
+    color: #1A0306;
+    border-color: var(--theme-gold-accent);
+    box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
+}
+
+.attendance-toggle-option input:checked + .decline-btn {
+    background: #c0392b;
+    color: #fff;
+    border-color: #c0392b;
+    box-shadow: 0 4px 10px rgba(192, 57, 43, 0.3);
+}
+
+.select-wrapper::after {
+    color: var(--theme-text-gold);
+}
+
+.form-group select {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(212, 175, 55, 0.25);
+    color: var(--theme-text-light);
+}
+
+.form-group select:focus {
+    border-color: var(--theme-gold-accent);
+}
+
+.form-status-msg.success {
+    color: #2ecc71;
+}
+
+.form-status-msg.error {
+    color: #e74c3c;
+}
+
+.rsvp-footer-title {
+    color: var(--theme-text-gold);
+}
+
+.rsvp-footer-names {
+    font-family: var(--theme-font-heading);
+    color: #fff;
+}
