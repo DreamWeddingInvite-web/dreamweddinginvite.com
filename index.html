@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding of {{ wedding.couple_names }}</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Montserrat:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/layout.css">
+    <link rel="stylesheet" href="/static/css/theme-{{ wedding.theme }}.css">
+</head>
+<body>
+    <!-- Main Shell to mimic Mobile App Experience on Desktop, and full-screen on Mobile -->
+    <div class="mobile-frame">
+        <div class="app-container">
+            
+            <!-- Music Controller -->
+            <button id="musicToggle" class="music-controller" aria-label="Toggle Music">
+                <span class="music-icon">🎵</span>
+                <audio id="bgMusic" loop>
+                    <source src="https://assets.mixkit.co/active_storage/sfx/123/123-128.mp3" type="audio/mpeg">
+                </audio>
+            </button>
+
+            <!-- Scrollable Container containing all views stacked vertically -->
+            <div class="scroll-container" id="scrollContainer">
+
+                <!-- Page 1: Invitation (Hero Video Experience) -->
+                <section id="page-invitation" class="page-view hero-section">
+                    <!-- Fullscreen Video Background -->
+                    <video class="video-bg" autoplay loop muted playsinline>
+                        <source src="{{ wedding.video_url }}" type="video/mp4">
+                    </video>
+                    <!-- Semi-transparent overlay to ensure text legibility -->
+                    <div class="video-overlay"></div>
+
+                    <div class="invitation-layout">
+                        <div class="invitation-text-content">
+                            <!-- Wreath Logo Initials -->
+                            <div class="monogram-wreath reveal">
+                                <span class="monogram-text">{{ wedding.monogram }}</span>
+                            </div>
+                            <p class="invite-sub reveal">Together with their families</p>
+                            <h1 class="couple-names reveal">{{ wedding.couple_names }}</h1>
+                            <p class="invite-action reveal">Invite you to celebrate their wedding</p>
+                            
+                            <div class="date-badge-container reveal">
+                                <span class="badge-month">{{ wedding.date_badge.month }}</span>
+                                <span class="badge-day">{{ wedding.date_badge.day }}</span>
+                                <span class="badge-year">{{ wedding.date_badge.year }}</span>
+                            </div>
+                            
+                            <p class="wedding-time reveal">{{ wedding.time_str }}</p>
+                            <div class="divider-line reveal"></div>
+                            <p class="invite-quote reveal">"{{ wedding.quote }}"</p>
+                            
+                            <button class="nav-trigger-btn gold-glow reveal" data-target="page-countdown">
+                                <span>OPEN INVITATION &darr;</span>
+                            </button>
+                        </div>
+                        
+                        <!-- Scroll Down Chevron -->
+                        <div class="scroll-down-indicator" data-target="page-countdown">
+                            <span class="chevron">&#8964;</span>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Page 2: Countdown -->
+                <section id="page-countdown" class="page-view parallax-section" data-countdown="{{ wedding.countdown_target }}">
+                    <div class="parallax-bg-layer"></div>
+                    <div class="section-content-wrap">
+                        <div class="page-header reveal">
+                            <p class="header-subtitle">Counting Down to</p>
+                            <h2 class="header-title">OUR BIG DAY</h2>
+                        </div>
+                        
+                        <!-- Countdown Timer Blocks -->
+                        <div class="countdown-grid reveal">
+                            <div class="count-card">
+                                <span class="count-icon">📅</span>
+                                <span class="count-num" id="days">00</span>
+                                <span class="count-lbl">Days</span>
+                            </div>
+                            <div class="count-card">
+                                <span class="count-icon">🕒</span>
+                                <span class="count-num" id="hours">00</span>
+                                <span class="count-lbl">Hours</span>
+                            </div>
+                            <div class="count-card">
+                                <span class="count-icon">⌛</span>
+                                <span class="count-num" id="minutes">00</span>
+                                <span class="count-lbl">Minutes</span>
+                            </div>
+                            <div class="count-card">
+                                <span class="count-icon">🐚</span>
+                                <span class="count-num" id="seconds">00</span>
+                                <span class="count-lbl">Seconds</span>
+                            </div>
+                        </div>
+
+                        <!-- Circular Framed Couple Photo -->
+                        <div class="framed-photo-container reveal reveal-scale">
+                            <div class="circle-frame">
+                                <img src="/static/images/couple.png" alt="{{ wedding.couple_names }}" class="framed-couple-img">
+                            </div>
+                        </div>
+
+                        <div class="countdown-quote reveal">
+                            <p>"The best thing to hold onto in life is each other."</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Page 3: Timeline -->
+                <section id="page-timeline" class="page-view parallax-section">
+                    <div class="parallax-bg-layer"></div>
+                    <div class="section-content-wrap">
+                        <div class="page-header reveal">
+                            <p class="header-subtitle">Our Celebration</p>
+                            <h2 class="header-title">EVENT TIMELINE</h2>
+                        </div>
+
+                        <div class="timeline-container">
+                            <div class="timeline-line"></div>
+                            
+                            <!-- Dynamic loop for Timeline Events -->
+                            {% for event in wedding.timeline %}
+                            <div class="timeline-item reveal {% if loop.index is odd %}reveal-left{% else %}reveal-right{% endif %}">
+                                <div class="timeline-time">{{ event.time }}</div>
+                                <div class="timeline-icon-wrap">
+                                    <span class="timeline-icon">{{ event.icon }}</span>
+                                </div>
+                                <div class="timeline-details">
+                                    <h4>{{ event.title }}</h4>
+                                    <p>{{ event.desc }}</p>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="location-btn-container reveal">
+                            <a href="{{ wedding.location_link }}" target="_blank" class="location-btn">
+                                <span>📍 VIEW LOCATION</span>
+                            </a>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Page 4: RSVP -->
+                <section id="page-rsvp" class="page-view parallax-section">
+                    <div class="parallax-bg-layer"></div>
+                    <div class="section-content-wrap">
+                        <div class="page-header reveal">
+                            <p class="header-subtitle">Kindly</p>
+                            <h2 class="header-title">RSVP</h2>
+                        </div>
+
+                        <div class="rsvp-card-wrap reveal">
+                            <form id="rsvpForm" data-action="/submit-rsvp/{{ wedding_id }}" data-whatsapp="{{ wedding.whatsapp_number }}" data-couple="{{ wedding.couple_names }}">
+                                <div class="form-group">
+                                    <label for="name">GUEST NAME(S)</label>
+                                    <input type="text" id="name" name="name" placeholder="e.g. John Doe & Guest" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>WILL YOU BE ATTENDING?</label>
+                                    <div class="attendance-toggle-wrap">
+                                        <label class="attendance-toggle-option">
+                                            <input type="radio" id="rsvp-yes" name="attendance" value="accept" required checked>
+                                            <span class="toggle-btn-custom accept-btn">💚 JOYFULLY ACCEPTS</span>
+                                        </label>
+                                        <label class="attendance-toggle-option">
+                                            <input type="radio" id="rsvp-no" name="attendance" value="decline" required>
+                                            <span class="toggle-btn-custom decline-btn">💔 REGRETFULLY DECLINES</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="form-group" id="meal-preference-wrap">
+                                    <label for="meal_preference">MEAL PREFERENCE</label>
+                                    <div class="select-wrapper">
+                                        <select id="meal_preference" name="meal_preference">
+                                            <option value="" disabled selected>Please select an option</option>
+                                            <option value="chicken">Chicken Menu</option>
+                                            <option value="fish">Fish Menu</option>
+                                            <option value="veg">Vegetarian Menu</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group" id="dietary-wrap">
+                                    <label for="dietary_restrictions">DIETARY RESTRICTIONS (OPTIONAL)</label>
+                                    <input type="text" id="dietary_restrictions" name="dietary_restrictions" placeholder="Let us know">
+                                </div>
+
+                                <button type="submit" id="submitBtn" class="rsvp-submit-btn">
+                                    <span class="btn-lbl">SUBMIT RSVP 🐚</span>
+                                    <span class="loading-spinner" id="btnSpinner"></span>
+                                </button>
+                            </form>
+                            <div id="rsvpMessage" class="form-status-msg"></div>
+                        </div>
+
+                        <div class="rsvp-footer reveal">
+                            <p class="rsvp-footer-title">CAN'T WAIT TO CELEBRATE WITH YOU!</p>
+                            <p class="rsvp-footer-names">WITH LOVE, {{ wedding.couple_names | upper }}</p>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+
+            <!-- Bottom Navigation Bar to match phone tab bar -->
+            <nav class="bottom-nav">
+                <button class="nav-item active" data-target="page-invitation">
+                    <span class="nav-icon">✉️</span>
+                    <span class="nav-text">Invite</span>
+                </button>
+                <button class="nav-item" data-target="page-countdown">
+                    <span class="nav-icon">⌛</span>
+                    <span class="nav-text">Countdown</span>
+                </button>
+                <button class="nav-item" data-target="page-timeline">
+                    <span class="nav-icon">📅</span>
+                    <span class="nav-text">Timeline</span>
+                </button>
+                <button class="nav-item" data-target="page-rsvp">
+                    <span class="nav-icon">🐚</span>
+                    <span class="nav-text">RSVP</span>
+                </button>
+            </nav>
+
+        </div>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>

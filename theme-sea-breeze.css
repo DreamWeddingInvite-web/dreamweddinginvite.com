@@ -1,0 +1,264 @@
+/* Sea Breeze Wedding Invitation Theme Tokens */
+:root {
+    --theme-teal-primary: #0F4C5C;
+    --theme-teal-light: #20B2AA;
+    --theme-gold-accent: #D4AF37;
+    --theme-gold-light: #F4E8C1;
+    --theme-sand-cream: #FAF8F5;
+    --theme-text-dark: #1A3E45;
+    --theme-text-muted: #5C767B;
+    --theme-font-heading: 'Playfair Display', serif;
+    --theme-font-cursive: 'Great Vibes', cursive;
+}
+
+/* Specific theme styles mapping */
+.app-container {
+    background: var(--theme-sand-cream);
+    color: var(--theme-text-dark);
+}
+
+.page-view {
+    background: url('/static/images/sea_breeze_bg.png') no-repeat center center;
+    background-size: cover;
+}
+
+.video-overlay {
+    background: linear-gradient(to bottom, rgba(15, 76, 92, 0.4) 0%, rgba(26, 62, 69, 0.75) 100%);
+}
+
+.invite-sub {
+    color: var(--theme-gold-light);
+    font-family: var(--theme-font-body);
+}
+
+.couple-names {
+    font-family: var(--theme-font-heading);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+
+.invite-action {
+    color: var(--theme-sand-cream);
+}
+
+.date-badge-container span {
+    font-family: var(--theme-font-heading);
+}
+
+.date-badge-container .badge-day {
+    color: var(--theme-gold-accent);
+}
+
+.wedding-time {
+    color: var(--theme-sand-cream);
+}
+
+.divider-line {
+    background: var(--theme-gold-accent);
+}
+
+.invite-quote {
+    font-family: var(--theme-font-heading);
+    color: var(--theme-gold-light);
+}
+
+/* Monogram */
+.monogram-wreath {
+    border: 2px double var(--theme-gold-accent);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.monogram-wreath::before {
+    color: var(--theme-gold-accent);
+}
+
+.monogram-text {
+    font-family: var(--theme-font-heading);
+    color: #fff;
+}
+
+/* Nav bar */
+.bottom-nav {
+    background: rgba(255, 255, 255, 0.92);
+    border-top: 1px solid rgba(15, 76, 92, 0.1);
+}
+
+.nav-item {
+    color: var(--theme-text-muted);
+}
+
+.nav-item.active {
+    color: var(--theme-teal-primary);
+}
+
+.nav-item.active::after {
+    background-color: var(--theme-teal-primary);
+}
+
+/* Audio Player */
+.music-controller {
+    background: rgba(255, 255, 255, 0.85);
+    border-color: rgba(15, 76, 92, 0.15);
+}
+
+.music-controller:hover {
+    border-color: var(--theme-teal-light);
+}
+
+/* Buttons */
+.nav-trigger-btn, .rsvp-submit-btn {
+    background: linear-gradient(135deg, var(--theme-teal-primary) 0%, var(--theme-teal-light) 100%);
+    color: #fff;
+}
+
+.nav-trigger-btn:hover, .rsvp-submit-btn:hover {
+    box-shadow: 0 6px 20px rgba(15, 76, 92, 0.35);
+}
+
+/* Countdown */
+.header-subtitle {
+    font-family: var(--theme-font-cursive);
+    color: var(--theme-gold-accent);
+}
+
+.header-title {
+    font-family: var(--theme-font-heading);
+    color: var(--theme-teal-primary);
+}
+
+.count-card {
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(15, 76, 92, 0.1);
+}
+
+.count-num {
+    color: var(--theme-teal-primary);
+}
+
+.count-lbl {
+    color: var(--theme-text-muted);
+}
+
+.circle-frame {
+    border: 5px solid rgba(255, 255, 255, 0.95);
+    box-shadow: 0 10px 25px rgba(15, 76, 92, 0.15), 0 0 0 1px rgba(212, 175, 55, 0.35);
+}
+
+.circle-frame::after {
+    border: 2px solid var(--theme-gold-accent);
+}
+
+.countdown-quote p {
+    font-family: var(--theme-font-heading);
+    color: var(--theme-text-muted);
+}
+
+/* Timeline */
+.timeline-line {
+    background: linear-gradient(to bottom, var(--theme-gold-accent) 0%, var(--theme-teal-light) 50%, var(--theme-gold-accent) 100%);
+}
+
+.timeline-time {
+    color: var(--theme-teal-light);
+}
+
+.timeline-icon-wrap {
+    background: #fff;
+    border: 2px solid var(--theme-teal-light);
+}
+
+.timeline-details {
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(15, 76, 92, 0.06);
+}
+
+.timeline-details h4 {
+    font-family: var(--theme-font-heading);
+    color: var(--theme-teal-primary);
+}
+
+.timeline-details p {
+    color: var(--theme-text-muted);
+}
+
+.location-btn {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--theme-teal-primary);
+    color: var(--theme-teal-primary);
+}
+
+.location-btn:hover {
+    background: var(--theme-teal-primary);
+    color: #fff;
+}
+
+/* RSVP card */
+.rsvp-card-wrap {
+    background: rgba(255, 255, 255, 0.85);
+    border: 1px solid rgba(15, 76, 92, 0.08);
+}
+
+.form-group label {
+    color: var(--theme-teal-primary);
+}
+
+.form-group input[type="text"] {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(15, 76, 92, 0.2);
+    color: var(--theme-text-dark);
+}
+
+.form-group input[type="text"]:focus {
+    border-color: var(--theme-teal-light);
+    box-shadow: 0 0 6px rgba(32, 178, 170, 0.25);
+}
+
+.toggle-btn-custom {
+    background: #fff;
+    border: 1px solid rgba(15, 76, 92, 0.2);
+    color: var(--theme-text-muted);
+}
+
+.attendance-toggle-option input:checked + .accept-btn {
+    background: var(--theme-teal-primary);
+    color: #fff;
+    border-color: var(--theme-teal-primary);
+    box-shadow: 0 4px 10px rgba(15, 76, 92, 0.2);
+}
+
+.attendance-toggle-option input:checked + .decline-btn {
+    background: #a94442;
+    color: #fff;
+    border-color: #a94442;
+    box-shadow: 0 4px 10px rgba(169, 68, 66, 0.2);
+}
+
+.select-wrapper::after {
+    color: var(--theme-teal-primary);
+}
+
+.form-group select {
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(15, 76, 92, 0.2);
+    color: var(--theme-text-dark);
+}
+
+.form-group select:focus {
+    border-color: var(--theme-teal-light);
+}
+
+.form-status-msg.success {
+    color: #2e7d32;
+}
+
+.form-status-msg.error {
+    color: #c62828;
+}
+
+.rsvp-footer-title {
+    color: var(--theme-teal-primary);
+}
+
+.rsvp-footer-names {
+    font-family: var(--theme-font-heading);
+    color: var(--theme-gold-accent);
+}

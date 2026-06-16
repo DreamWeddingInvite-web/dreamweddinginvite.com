@@ -1,0 +1,577 @@
+/* Base layout for Snap Scroll Wedding Invitation (Multi-Tenant) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Device Mockup Frame */
+.mobile-frame {
+    width: 430px;
+    height: 860px;
+    border: 12px solid #222e33;
+    border-radius: 48px;
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.25);
+    background: #fff;
+    overflow: hidden;
+    position: relative;
+    margin: 20px auto;
+}
+
+.app-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 600px) {
+    body {
+        display: block;
+    }
+    .mobile-frame {
+        width: 100vw;
+        height: 100vh;
+        border: none;
+        border-radius: 0;
+        margin: 0;
+    }
+}
+
+/* Scrollsnap Container */
+.scroll-container {
+    width: 100%;
+    height: calc(100% - 65px); /* Exclude bottom navigation height */
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+}
+
+.scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+/* Page views (Snap Align) */
+.page-view {
+    height: 100%;
+    width: 100%;
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+    position: relative;
+    overflow: hidden;
+}
+
+.section-content-wrap {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    padding: 35px 24px 70px 24px;
+    scrollbar-width: none;
+}
+
+.section-content-wrap::-webkit-scrollbar {
+    display: none;
+}
+
+.page-header {
+    text-align: center;
+    margin-bottom: 25px;
+}
+
+/* Parallax backgrounds */
+.parallax-section {
+    position: relative;
+}
+
+.parallax-bg-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 130%;
+    z-index: 1;
+    transform: translateY(0);
+    will-change: transform;
+}
+
+/* Background video styles */
+.video-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+.invitation-layout {
+    position: relative;
+    z-index: 3;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 25px 30px 25px;
+    text-align: center;
+}
+
+.invitation-text-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+/* Bottom navigation tab bar */
+.bottom-nav {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 65px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 90;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.nav-item {
+    border: none;
+    background: none;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    cursor: pointer;
+    position: relative;
+}
+
+.nav-icon {
+    font-size: 1.25rem;
+    margin-bottom: 3px;
+    transition: transform 0.3s;
+}
+
+.nav-text {
+    font-size: 0.62rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.nav-item.active .nav-icon {
+    transform: scale(1.15);
+}
+
+.nav-item.active::after {
+    content: '';
+    width: 16px;
+    height: 3px;
+    border-radius: 2px;
+    margin-top: 2px;
+    position: absolute;
+    bottom: 4px;
+}
+
+/* Audio Player */
+.music-controller {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
+
+.music-controller:hover {
+    transform: scale(1.1);
+}
+
+/* Monogram */
+.monogram-wreath {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 10px auto;
+    position: relative;
+}
+
+/* Countdown slots */
+.countdown-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 25px;
+}
+
+.count-card {
+    border-radius: 12px;
+    padding: 12px 6px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.count-icon {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.count-num {
+    font-size: 1.35rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 4px;
+}
+
+.count-lbl {
+    font-size: 0.62rem;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+/* Circular Framed Photo */
+.framed-photo-container {
+    display: flex;
+    justify-content: center;
+    margin: 15px 0 25px 0;
+}
+
+.circle-frame {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: relative;
+}
+
+.framed-couple-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.countdown-quote {
+    text-align: center;
+    padding: 0 15px;
+}
+
+/* Timeline components */
+.timeline-container {
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 30px;
+}
+
+.timeline-line {
+    position: absolute;
+    left: 12px;
+    top: 5px;
+    bottom: 5px;
+    width: 2px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 22px;
+}
+
+.timeline-item:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-time {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+.timeline-icon-wrap {
+    position: absolute;
+    left: -35px;
+    top: 0;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.05);
+}
+
+.timeline-icon {
+    font-size: 0.8rem;
+}
+
+.timeline-details {
+    border-radius: 12px;
+    padding: 10px 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.03);
+}
+
+.location-btn-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.location-btn {
+    display: inline-block;
+    text-decoration: none;
+    padding: 10px 25px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.location-btn:hover {
+    transform: translateY(-1px);
+}
+
+/* RSVP card components */
+.rsvp-card-wrap {
+    border-radius: 20px;
+    padding: 25px 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-group label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    display: block;
+    margin-bottom: 6px;
+}
+
+.form-group input[type="text"] {
+    width: 100%;
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 0.85rem;
+    transition: all 0.3s;
+}
+
+.form-group input[type="text"]:focus {
+    outline: none;
+}
+
+.attendance-toggle-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+}
+
+.attendance-toggle-option {
+    cursor: pointer;
+}
+
+.attendance-toggle-option input {
+    position: absolute;
+    opacity: 0;
+}
+
+.toggle-btn-custom {
+    display: block;
+    text-align: center;
+    padding: 12px 8px;
+    border-radius: 8px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.select-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.select-wrapper::after {
+    content: '▼';
+    font-size: 0.7rem;
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+.form-group select {
+    width: 100%;
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 0.85rem;
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+
+.form-group select:focus {
+    outline: none;
+}
+
+.rsvp-submit-btn {
+    width: 100%;
+    border: none;
+    padding: 14px;
+    border-radius: 25px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.rsvp-submit-btn:hover {
+    transform: translateY(-1px);
+}
+
+.rsvp-submit-btn:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.loading-spinner {
+    display: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 0.8s linear infinite;
+    position: absolute;
+    right: 20px;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.form-status-msg {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.rsvp-footer {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.rsvp-footer-title {
+    font-size: 0.72rem;
+    letter-spacing: 1.5px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+/* Animations */
+.scroll-down-indicator {
+    cursor: pointer;
+    animation: bounce 2s infinite;
+}
+
+.chevron {
+    font-size: 2.2rem;
+    font-weight: 300;
+    line-height: 1;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-8px); }
+    60% { transform: translateY(-4px); }
+}
+
+/* ---------------------------------------------------- */
+/* Reveal Scroll Animations */
+/* ---------------------------------------------------- */
+.reveal {
+    opacity: 0;
+    transform: translateY(25px);
+    transition: opacity 0.8s cubic-bezier(0.2, 0.8, 0.2, 1), 
+                transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.reveal.reveal-left {
+    transform: translateX(-30px);
+}
+
+.reveal.reveal-right {
+    transform: translateX(30px);
+}
+
+.reveal.reveal-scale {
+    transform: scale(0.92);
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0) translateX(0) scale(1);
+}
+
+.gold-glow {
+    animation: glowPulse 2s infinite alternate;
+}
+
+@keyframes glowPulse {
+    0% { box-shadow: 0 0 5px rgba(212, 175, 55, 0.2); }
+    100% { box-shadow: 0 0 15px rgba(212, 175, 55, 0.5); }
+}
